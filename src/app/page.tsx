@@ -1,33 +1,47 @@
-import GreetForm from '@/components/GreetForm';
-import CookieDemo from '@/components/CookieDemo';
+import LoginForm from '@/components/LoginForm';
+import { checkAuth } from '@/actions/authActions';
+import { redirect } from 'next/navigation';
 
-export default function Home() {
+export default async function LoginPage() {
+  // Check if user is already logged in
+  const isAuthenticated = await checkAuth();
+  
+  if (isAuthenticated) {
+    redirect('/home');
+  }
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <main className="bg-white rounded-2xl shadow-xl p-8 max-w-2xl w-full">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-4">
+      <main className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">
-            Server-Side Greeter
-          </h1>
-          <p className="text-gray-600 text-lg">
-            Experience Next.js 15 Server Actions in real-time
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2 justify-center text-sm">
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full">App Router</span>
-            <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full">Server Actions</span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-800 rounded-full">Server Components</span>
-            <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full">Middleware</span>
+          <div className="inline-block p-4 bg-blue-100 rounded-full mb-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-12 w-12 text-blue-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
           </div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome Back
+          </h1>
+          <p className="text-gray-600">
+            Sign in to access the greeter app
+          </p>
         </div>
 
-        <div className="flex justify-center">
-          <GreetForm />
-        </div>
+        <LoginForm />
 
-        <CookieDemo />
-
-        <div className="mt-8 pt-6 border-t border-gray-200 text-center text-sm text-gray-500">
-          <p>Built with Next.js 15 • Ready for Vercel Deployment</p>
+        <div className="mt-6 pt-6 border-t border-gray-200 text-center text-xs text-gray-500">
+          <p>Next.js 15 • Secure Authentication</p>
         </div>
       </main>
     </div>

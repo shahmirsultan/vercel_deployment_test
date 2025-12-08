@@ -19,3 +19,4 @@ export async function removeAuthCookie() {
   return { success: true, message: 'Auth cookie removed! /admin will redirect now' };
 }
 
+
