@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0514;
+  --foreground: #ede9f5;
 }
 
 @theme inline {
@@ -14,13 +14,39 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0514;
+    --foreground: #ede9f5;
   }
 }
 
 body {
-  background: var(--background);
+  min-height: 100vh;
+  background: radial-gradient(
+      circle at 24% 22%,
+      rgba(168, 85, 247, 0.18),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 78% 16%,
+      rgba(236, 72, 153, 0.20),
+      transparent 34%
+    ),
+    radial-gradient(circle at 70% 88%, rgba(59, 130, 246, 0.16), transparent 30%),
+    linear-gradient(125deg, #0a0514 0%, #1a0f2e 48%, #0a0514 100%);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  letter-spacing: 0.015em;
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+  backdrop-filter: blur(20px);
+}
+
+.card-edge {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.32);
 }

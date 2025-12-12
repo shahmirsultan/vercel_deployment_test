@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { logoutUser } from '@/actions/authActions';
+import { logoutUser } from "@/actions/authActions";
 
 export default function LogoutButton() {
   async function handleLogout() {
@@ -11,7 +11,7 @@ export default function LogoutButton() {
     <form action={handleLogout}>
       <button
         type="submit"
-        className="px-4 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition-colors flex items-center gap-2"
+        className="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:border-white/35"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,4 +32,3 @@ export default function LogoutButton() {
     </form>
   );
 }
-
